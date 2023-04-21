@@ -4,7 +4,7 @@ function NewTaskForm(props) {
   // console.log(props.categories)
   const { categories, onTaskFormSubmit } = props;
   const [text, setName] = useState({});
-  const [category, setCategory] = useState({});
+  const [category, setCategory] = useState("All");
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -20,11 +20,11 @@ function NewTaskForm(props) {
     setName(prevObj => {return {...prevObj,[txt]:event.target.value}})  
   }
 
-  function handleChanging(event){
-    let cat = event.target.id
-    setCategory(prevObj => {return {...prevObj,[cat]:event.target.value}})  
+  // function handleChanging(event){
+  //   let cat = event.target.id
+  //   setCategory(prevObj => {return {...prevObj,[cat]:event.target.value}})  
     
-  }
+  // }
   const displayCategory = categories.map(category => {
     // console.log(category)
     return <option key={category}>{category}</option>
@@ -40,7 +40,7 @@ function NewTaskForm(props) {
       </label>
       <label>
         Category
-        <select name="category" value={category} id = "category" onChange={handleChanging}>
+        <select name="category" value={category} id = "category">
           {/* render <option> elements for each category here */}
           {displayCategory}
         </select>
